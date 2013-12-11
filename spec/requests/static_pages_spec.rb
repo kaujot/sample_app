@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+	#Set global page title prefix
+	let(:base_title) { "Ruby on Rails Tutorial Sample App" }
+
 	#Testing Home Page behavior
 	describe "Home page" do
 
@@ -13,7 +16,7 @@ describe "Static pages" do
 		#Title test
 		it "should have the title 'Home'" do
 			visit '/static_pages/home'
-			expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
+			expect(page).to have_title("#{base_title} | Home")
 		end
 
 	end
@@ -29,7 +32,7 @@ describe "Static pages" do
 		#Title test
 		it "should have the title 'Help'" do
 			visit '/static_pages/help'
-			expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
+			expect(page).to have_title("#{base_title} | Help")
 		end
 
 	end
@@ -45,9 +48,25 @@ describe "Static pages" do
 		#Title test
 		it "should have the title 'About Us'" do
 			visit '/static_pages/about'
-			expect(page).to have_title("Ruby on Rails Tutorial Sample App | About Us")
+			expect(page).to have_title("#{base_title} | About Us")
 		end
 		
 	end
+
+	#Testing Contact Page behavior
+	describe "Contact page" do
+
+		it "should have the content 'Contact Us'" do
+			visit '/static_pages/contact'
+			expect(page).to have_content('Contact Us')
+		end
+
+		#Title test
+		it "should have the title 'Contact Us'" do
+			visit '/static_pages/contact'
+			expect(page).to have_title("#{base_title} | Contact Us")
+		end
+	end
+
 
 end
